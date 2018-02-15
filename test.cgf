@@ -1,0 +1,7 @@
+[default]
+first = '/path/to/file'
+second = 42
+third = 0.9
+fourth = ['one', 'two', 'three']
+fifth = [1, 2, 3]
+sixth = [0.2, 0.4]
