@@ -20,6 +20,7 @@ conda install -y -c conda-forge opencv
 conda install -y -q -c anaconda tensorflow-gpu=1.4.1
 conda install -y -q -c anaconda matplotlib
 conda install -y -q -c anaconda scikit-learn
+conda install -y -q- c anaconda shapely
 pip install imgaug
 source deactivate tensorflow-CS
 
