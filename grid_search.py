@@ -32,7 +32,7 @@ config_names = []
 search_names = sorted(search_part.keys())
 
 def get_config_string(full_dictionary):
-    parts = []
+    parts = [template_config]
     for name in search_names:
         parts.append("{0}{1}".format(name[0:2], full_dictionary[name]))
     return "-".join(parts)
