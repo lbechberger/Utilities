@@ -8,10 +8,10 @@
 
 
 wget -q https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh -b -p "$HOME/miniconda"
+bash Miniconda3-latest-Linux-x86_64.sh -b -p "$HOME/store/miniconda"
 rm Miniconda3-latest-Linux-x86_64.sh
 
-export PATH="$HOME/miniconda/bin:$PATH"
+export PATH="$HOME/store/miniconda/bin:$PATH"
 
 conda create -y -q --name tensorflow-CS python=3.5 pip
 
@@ -24,5 +24,5 @@ conda install -y -q- c anaconda shapely
 pip install imgaug
 source deactivate tensorflow-CS
 
-cd $HOME/miniconda/pkgs
+cd $HOME/store/miniconda/pkgs
 rm *.tar.bz2 -f 2> /dev/null
