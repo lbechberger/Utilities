@@ -8,10 +8,10 @@
 
 
 wget -q https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh -b -p "$HOME/store/miniconda"
+bash Miniconda3-latest-Linux-x86_64.sh -b -p "/net/projects/scratch/winter/valid_until_31_July_2019/lbechberger/miniconda"
 rm Miniconda3-latest-Linux-x86_64.sh
 
-export PATH="$HOME/store/miniconda/bin:$PATH"
+export PATH="/net/projects/scratch/winter/valid_until_31_July_2019/lbechberger/miniconda/bin:$PATH"
 
 conda create -y -q --name tensorflow-CS python=3.5 pip
 
