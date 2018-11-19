@@ -66,11 +66,11 @@ with open(args.input_file_name, 'r') as in_file:
                     start_idx = tokens[0].find(args.grouping)
                     # find the end of the given hyperparameter
                     end_idx = tokens[0].find('-', start_idx)
-                    if tokens[0][end_idx + 1].isdigit():
-                        # need special dealing for 'di9e-05'
-                        end_idx = tokens[0].find('-', end_idx + 1)
                     if end_idx == -1:
                         end_idx = len(tokens[0])
+                    elif tokens[0][end_idx + 1].isdigit():
+                        # need special dealing for 'di9e-05'
+                        end_idx = tokens[0].find('-', end_idx + 1)
                     bin_name = tokens[0][start_idx:end_idx]
                 else:
                     bin_name = tokens[0]
