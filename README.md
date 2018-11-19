@@ -45,3 +45,15 @@ The script `submit_array_job.sge` can be used to submit a job to the Sun grid en
 `./submit_array_job.sh job params_file n c`
 
 The first argument `job` is an sge script that will be submitted via `qsub`. The second argument `params_file` is the path to a file with parameters (e.g., the one created by the grid search script). The third argument `n` determines the number of times each configuration inside `params_file` will be run and the last argument `c` determines the number of configurations to be handled by a single task.
+
+### compress_results.py
+
+This script is to be used on the CSV file output of the `LearningConceptualDimensions` or the `LTN-in-Conceptual-Spaces` projects in order to average across multiple runs of the same configuration. It can be invoked as follows:
+```python compress_results.py input_file_name output_file_name```
+
+The script also takes an additional parameter `-g` or `--grouping`. If `--grouping` is not set, the script will aggregate all lines with the same configuration name into a single line by averaging across their values. This can be used to get a more robust estimation of a configuration's performance by averaging over a certain number of independent runs.
+
+If `--grouping` is set for example to `la`, there will be as many groups as the `la` hyperparameter takes different values. If we have three possible values of `la`, namely 1.0, 2.0, and 3.0, then this script will aggregate all lines containing `la1.0` in their configuration name into a single line, all configurations containing `la2.0` into another row, and all configurations containing `la3.0` into a third row. This can be used to get a first idea about the overall influence of a given hyperparameter.
+
+
+
