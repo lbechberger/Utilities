@@ -56,4 +56,10 @@ The script also takes an additional parameter `-g` or `--grouping`. If `--groupi
 If `--grouping` is set for example to `la`, there will be as many groups as the `la` hyperparameter takes different values. If we have three possible values of `la`, namely 1.0, 2.0, and 3.0, then this script will aggregate all lines containing `la1.0` in their configuration name into a single line, all configurations containing `la2.0` into another row, and all configurations containing `la3.0` into a third row. This can be used to get a first idea about the overall influence of a given hyperparameter.
 
 
+### statistical_analysis.py
 
+The script `statistical_analysis` conducts some statistical analyses on the individual hyperparameters with respect to a set of given metrics. In short, it analyzes whether there are any statistically significant differences between the results obtained for different values of a given hyperparameter. After having printed out the respective statistics, some box plots are generated in order to illustrate the findings. The script can be run as follows, where `input_file_name` contains the path to the CSV file containing all data from the individual runs:
+```python statistical_analysis.py input_file_name type```
+The parameter `type` refers to the type of underlying experiment. Choose `InfoGAN` or `LTN` for InfoGAN and LTN experiments, respectively. The script also takes two optional arguments:
+- `-t` or `--threshold`: The significance threshold to use for deciding on statistical significance (default: 0.05)
+- `-o` or `--output_folder`: Output folder where the box plots are stored (default: current working directory).
