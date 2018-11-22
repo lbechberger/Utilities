@@ -17,6 +17,7 @@ from configparser import RawConfigParser
 parser = argparse.ArgumentParser(description='Statistical analyis')
 parser.add_argument('input_file_name', help = 'the input file containing all individual runs')
 parser.add_argument('config_file_name', help = 'the config file specifying the hyperparameters and metrics')
+parser.add_argument('data_set', help = 'the data set to analyze')
 parser.add_argument('-t', '--threshold', type = int, help = 'significance threshold', default = 0.01)
 parser.add_argument('-o', '--output_folder', help = 'folder for storing the output images', default = '.')
 parser.add_argument('-p', '--parameters', help = 'the configuration of hyperparameters to investigate', default = 'all_hyperparams')
@@ -46,6 +47,11 @@ with open(args.input_file_name, 'r') as in_file:
         dictionary[key].append(vector)
        
     for row in reader:
+        
+        # skip all the rows that don't belong to the data set of interest
+        if row['data_set'] != args.data_set:
+            continue
+        
         config_name = row['config']
         
         for hyperparam in hyperparams:
