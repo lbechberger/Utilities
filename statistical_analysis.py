@@ -68,6 +68,7 @@ with open(args.input_file_name, 'r') as in_file:
                 try_add(dictionary[hyperparam], bin_name, float(row[metric]))
 
 
+
 # now do some statistical tests to check for normal distribution of all the bins
 for metric, dictionary in bins.items():
     for hyperparam, bins in dictionary.items():
@@ -101,7 +102,6 @@ for metric, dictionary in bins.items():
         all_bins_sorted = sorted(all_bins_raw, key = lambda y: y[0])
         all_bins = list(map(lambda x: x[1], all_bins_sorted))
         bin_names = list(map(lambda x: x[0], all_bins_sorted))      
-        print(bin_names)
         
         if all_bins_normal:
             # do ANOVA
