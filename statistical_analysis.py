@@ -12,44 +12,30 @@ import csv
 import os
 from scipy.stats import shapiro, normaltest, f_oneway, ttest_ind, kruskal, mannwhitneyu
 from matplotlib import pyplot as plt
+from configparser import RawConfigParser
 
 parser = argparse.ArgumentParser(description='Statistical analyis')
 parser.add_argument('input_file_name', help = 'the input file containing all individual runs')
-parser.add_argument('type', help = 'type of data this is run on ("InfoGAN", "LTN")')
+parser.add_argument('config_file_name', help = 'the config file specifying the hyperparameters and metrics')
 parser.add_argument('-t', '--threshold', type = int, help = 'significance threshold', default = 0.05)
 parser.add_argument('-o', '--output_folder', help = 'folder for storing the output images', default = '.')
+parser.add_argument('-p', '--parameters', help = 'the configuration of hyperparameters to investigate', default = 'all_hyperparams')
+parser.add_argument('-m', '--metrics', help = 'the configuration of metrics to investigate', default = 'all_metrics')
 args = parser.parse_args()
              
-             
+config = RawConfigParser()
+config.read(args.config_file_name)
 
-if args.type == 'InfoGAN':
-    hyperparams = ['ba', 'di', 'la', 'no', 'ep']
-    hyperparams_mapping = {'ba' : 'batch size', 'di' : 'discriminator learning rate', 'la' : 'lambda', 
-                           'no' : 'size of noise input', 'ep' : 'number of epochs', 'ty' : 'type of structured noise'}
-    metric_mapping = {'min_range' : 'Minimial range of latent variables', 
-                      'overall_cor' : 'Overall correlations of the latent code with interpretable dimensions'}
-    bins = {'min_range' : {}, 'overall_cor' : {}}
-elif args.type == "LTN":
-    hyperparams = ['ag', 'cl', 'op', 'po', 'sm', 'tn', 'ep']
-    hyperparams_mapping = {'ag' : 'data point aggregator', 
-                           'cl' : 'clause aggregator', 
-                           'op' : 'optimization algorithm', 
-                           'po' : 'positive fact penalty', 
-                           'sm' : 'smooth factor', 
-                           'tn' : 't-norm', 
-                           'ep' : 'number of epochs'}
-    metric_mapping = {'one_error' : 'One Error', 'coverage' : 'Coverage', 'ranking_loss' : 'Ranking Loss', 
-                      'cross_entropy_loss' : 'Cross Entropy Loss', 'average_precision' : 'Average Precision', 
-                      'exact_match_prefix': 'Exact Match Prefix', 'min' : 'Minimal Label-Wise Hit Rate', 
-                      'mean' : 'Average Label-Wise Hit Rate'}
-    bins = {'one_error' : {}, 'coverage' : {}, 'ranking_loss' : {}, 'cross_entropy_loss' : {}, 'average_precision' : {},
-            'exact_match_prefix' : {}, 'min' : {}, 'mean' : {}}
-else:
-    raise Exception("unknown type")
+hyperparams_mapping = config[args.parameters]
+metric_mapping = config[args.metrics]
 
-for hyperparam in hyperparams:
-    for metric, dictionary in bins.items():
-        dictionary[hyperparam] = {}
+hyperparams = sorted(list(hyperparams_mapping.keys()))
+bins = {}
+for metric in metric_mapping.keys():
+    bins[metric] = {}  
+    for hyperparam in hyperparams:
+        bins[metric][hyperparam] = {}           
+
 
 with open(args.input_file_name, 'r') as in_file:
     reader = csv.DictReader(in_file, delimiter=',')
@@ -168,7 +154,8 @@ for metric, dictionary in bins.items():
         fig, ax = plt.subplots()
         ax.boxplot(all_bins, labels = bin_names)
         ax.set_title("{0}\nfor different values of {1}".format(metric_mapping[metric], hyperparams_mapping[hyperparam]))
-        plt.savefig(os.path.join(args.output_folder, "{0}-{1}.png".format(metric, hyperparam)))       
+        plt.savefig(os.path.join(args.output_folder, "{0}-{1}.png".format(metric, hyperparam)))   
+        plt.close(fig)
         
     print("\n")
         
