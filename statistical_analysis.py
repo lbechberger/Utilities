@@ -17,7 +17,7 @@ from configparser import RawConfigParser
 parser = argparse.ArgumentParser(description='Statistical analyis')
 parser.add_argument('input_file_name', help = 'the input file containing all individual runs')
 parser.add_argument('config_file_name', help = 'the config file specifying the hyperparameters and metrics')
-parser.add_argument('-t', '--threshold', type = int, help = 'significance threshold', default = 0.05)
+parser.add_argument('-t', '--threshold', type = int, help = 'significance threshold', default = 0.01)
 parser.add_argument('-o', '--output_folder', help = 'folder for storing the output images', default = '.')
 parser.add_argument('-p', '--parameters', help = 'the configuration of hyperparameters to investigate', default = 'all_hyperparams')
 parser.add_argument('-m', '--metrics', help = 'the configuration of metrics to investigate', default = 'all_metrics')

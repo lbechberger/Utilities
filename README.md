@@ -61,7 +61,7 @@ If `--grouping` is set for example to `la`, there will be as many groups as the 
 The script `statistical_analysis` conducts some statistical analyses on the individual hyperparameters with respect to a set of given metrics. In short, it analyzes whether there are any statistically significant differences between the results obtained for different values of a given hyperparameter. After having printed out the respective statistics, some box plots are generated in order to illustrate the findings. The script can be run as follows, where `input_file_name` contains the path to the CSV file containing all data from the individual runs:
 ```python statistical_analysis.py input_file_name config_file_name```
 The parameter `config_file_name` refers to the config file storing the hyperparameters and metrics to use for the analysis. By default, the configurations `all_hyperparams` and `all_metrics` from this file are used. The script also takes four optional arguments:
-- `-t` or `--threshold`: The significance threshold to use for deciding on statistical significance (default: 0.05).
+- `-t` or `--threshold`: The significance threshold to use for deciding on statistical significance (default: 0.01).
 - `-o` or `--output_folder`: Output folder where the box plots are stored (default: current working directory).
 - `-p` or `--parameters`: Name of the configuration within `config_file_name` that contains the hyperparameters to analyze (default: `all_hyperparams`).
 - `-m` or `--metrics`: Name of the configuration within `config_file_name` that contains the metrics to analyze (default: `all_metrics`).
