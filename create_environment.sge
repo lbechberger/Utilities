@@ -23,6 +23,8 @@ conda install -y -q matplotlib
 conda install -y -q scikit-learn
 conda install -y -q shapely
 pip install imgaug
+pip install pillow
+pip install scikit-image
 source deactivate tensorflow-CS
 
 cd $HOME/store/miniconda/pkgs
