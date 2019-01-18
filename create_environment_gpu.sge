@@ -16,16 +16,15 @@ export PATH="/net/projects/scratch/winter/valid_until_31_July_2019/lbechberger/m
 conda create -y -q --name tensorflow-CS python=3.5 pip
 
 source activate tensorflow-CS
-conda install -y -c conda-forge opencv
-conda install -y -q tensorflow-gpu=1.4.1
-conda install -y -q cudnn=7.1.2
-conda install -y -q matplotlib
-conda install -y -q scikit-learn
-conda install -y -q shapely
-pip install imgaug
-pip install pillow
-pip install scikit-image
+conda install -y -q -c anaconda opencv=3.4
+conda install -y -q -c anaconda tensorflow-gpu=1.10
+conda install -y -q -c anaconda cudnn=7.1.2
+conda install -y -q -c anaconda matplotlib=3.0
+conda install -y -q -c anaconda scikit-learn=0.20
+conda install -y -q -c anaconda pillow=5.2
+conda install -y -q -c anaconda scikit-image=0.14
+pip install imgaug==0.2
 source deactivate tensorflow-CS
 
-cd $HOME/store/miniconda/pkgs
+cd $HOME/miniconda/pkgs
 rm *.tar.bz2 -f 2> /dev/null

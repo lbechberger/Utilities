@@ -3,11 +3,11 @@ A collection of utility scripts used in multiple projects.
 
 ## Creating a virtual environment
 
-There are two scripts that will install anaconda and set up a virtual environment called `tensorflow-CS`: `create_environment.sge` creates an environment that uses tensorflow with GPU support. If you want to use this variant, please make sure that CUDA, CuDNN, etc. are properly installed on your machine. The alternative `create_environment_cpu.sge` installs tensorflow with CPU support only. This can be considerably slower than the GPU variant, but can be run on any machine. Both scripts are prepared for being run on a Sun grid engine, but can be executed on a local machine as well by simply typing `./create_environment.sge` and `./create_environment_cpu.sge`, respectively.
+There are two scripts that will install anaconda and set up a virtual environment called `tensorflow-CS`: `create_environment_gpu.sge` creates an environment that uses tensorflow with GPU support. If you want to use this variant, please make sure that CUDA, CuDNN, etc. are properly installed on your machine. The alternative `create_environment_cpu.sge` installs tensorflow with CPU support only. This can be considerably slower than the GPU variant, but can be run on any machine. Both scripts are prepared for being run on a Sun grid engine, but can be executed on a local machine as well by simply typing `./create_environment_gpu.sge` and `./create_environment_cpu.sge`, respectively.
 
 The following dependencies are currently part of the environment:
 * Python 3.5
-* TensorFlow 1.4.1
+* TensorFlow 1.10
 * matplotlib
 * scikit-learn
 * Shapely
