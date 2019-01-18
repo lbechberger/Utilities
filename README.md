@@ -7,11 +7,13 @@ There are two scripts that will install anaconda and set up a virtual environmen
 
 The following dependencies are currently part of the environment:
 * Python 3.5
+* OpenCV 3.4
 * TensorFlow 1.10
-* matplotlib
-* scikit-learn
-* Shapely
-* imgaug
+* matplotlib 3.0
+* scikit-learn 0.20
+* Pillow 5.2
+* imgaug 0.2
+
 
 After installing the environment, you can activate it by typing `source activate tensorflow-CS`.
 
