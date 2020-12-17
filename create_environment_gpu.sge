@@ -27,8 +27,6 @@ conda install -y -q -c anaconda matplotlib=3.0
 rm *.tar.bz2 -f 2> /dev/null
 conda install -y -q -c anaconda scikit-learn=0.20
 rm *.tar.bz2 -f 2> /dev/null
-conda install -y -q -c anaconda pillow=5.2
-rm *.tar.bz2 -f 2> /dev/null
 conda install -y -q -c anaconda scikit-image=0.14
 rm *.tar.bz2 -f 2> /dev/null
 pip install imgaug==0.2.5
