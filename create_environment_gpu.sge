@@ -8,29 +8,23 @@
 
 
 wget -q https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh -b -p "$HOME/miniconda"
+bash Miniconda3-latest-Linux-x86_64.sh -b -p "$HOME/store/miniconda"
 rm Miniconda3-latest-Linux-x86_64.sh
 
-export PATH="$HOME/miniconda/bin:$PATH"
+export PATH="$HOME/store/miniconda/bin:$PATH"
 
 conda create -y -q --name tensorflow-CS python=3.5 pip
 
 source activate tensorflow-CS
 conda install -y -q -c anaconda opencv=3.4
-cd $HOME/miniconda/pkgs
-rm *.tar.bz2 -f 2> /dev/null
 conda install -y -q -c anaconda tensorflow-gpu=1.10
-rm *.tar.bz2 -f 2> /dev/null
 conda install -y -q -c anaconda cudnn=7.1.2
-rm *.tar.bz2 -f 2> /dev/null
 conda install -y -q -c anaconda matplotlib=3.0
-rm *.tar.bz2 -f 2> /dev/null
 conda install -y -q -c anaconda scikit-learn=0.20
-rm *.tar.bz2 -f 2> /dev/null
+conda install -y -q -c anaconda pillow=5.2
 conda install -y -q -c anaconda scikit-image=0.14
-rm *.tar.bz2 -f 2> /dev/null
 pip install imgaug==0.2.5
-rm *.tar.bz2 -f 2> /dev/null
 source deactivate tensorflow-CS
 
+cd $HOME/store/miniconda/pkgs
 rm *.tar.bz2 -f 2> /dev/null
