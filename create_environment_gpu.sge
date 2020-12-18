@@ -13,11 +13,11 @@ rm Miniconda3-latest-Linux-x86_64.sh
 
 export PATH="$HOME/store/miniconda/bin:$PATH"
 
-conda create -y -q --name tensorflow-CS python=3.5 pip
+conda create -y -q --name tensorflow-CS python=3.6 pip
 
 source activate tensorflow-CS
 conda install -y -q -c anaconda opencv=3.4
-conda install -y -q -c anaconda tensorflow-gpu=1.10
+conda install -y -q -c anaconda tensorflow-gpu=1.15
 conda install -y -q -c anaconda matplotlib=3.0
 conda install -y -q -c anaconda scikit-learn=0.20
 conda install -y -q -c anaconda pillow=5.2
