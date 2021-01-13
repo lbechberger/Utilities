@@ -16,13 +16,14 @@ export PATH="$HOME/store/miniconda/bin:$PATH"
 conda create -y -q --name tensorflow-CS python=3.5 pip
 
 source activate tensorflow-CS
+pip install tensorflow-gpu==1.4
 conda install -y -q -c anaconda opencv=3.4
-conda install -y -q -c anaconda tensorflow-gpu=1.4
 conda install -y -q -c anaconda matplotlib=3.0
 conda install -y -q -c anaconda scikit-learn=0.20
 conda install -y -q -c anaconda pillow=5.2
 conda install -y -q -c anaconda scikit-image=0.14
 pip install imgaug==0.2.5
+conda install -y -q -c anaconda h5py=2.8
 source deactivate tensorflow-CS
 
 cd $HOME/store/miniconda/pkgs
