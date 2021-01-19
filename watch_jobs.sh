@@ -17,9 +17,11 @@ do
 	for job in $current_jobs
 	do
 		path_to_log="$3""$2"'.e'"$job"
-		if $(grep Killed $path_to_log | wc -l)
+		killed=$(grep Killed $path_to_log | wc -l)
+		crashed=$(grep Exception $path_to_log | wc -l)
+		if [ $killed -ne 0 ] || [ $crashed -ne 0 ]
 		then
-			echo 'job '"$job"' has been killed, restarting now...'
+			echo 'job '"$job"' has not finished, restarting now...'
 			parameters=$(head -n 1 $path_to_log)
 			echo $parameters
 			qsub $1 $parameters
