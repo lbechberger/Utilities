@@ -39,7 +39,7 @@ do
 	if [ $time_diff -ge 200000 ]
 	then
 		echo 'restarting watcher'
-		qsub watch_job.sge $*
+		qsub ../Utilities/watch_job.sge $*
 		break
 	fi
 done
