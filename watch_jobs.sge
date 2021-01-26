@@ -8,6 +8,9 @@
 # 1st argument: job to submit, 2nd argument: job name, 3rd argument: directory of error logs (needs tailing /)
 
 start_time=$(date +%s)
+
+sleep 1m
+
 while true
 do
 	echo ''
@@ -33,6 +36,12 @@ do
 			qsub $1 $parameters
 		fi
 	done
+
+	if [ -z "$current_jobs" ]
+	then
+		echo 'no jobs left, exiting'
+		break
+	fi
 
 	current_time=$(date +%s)
 	time_diff=$((current_time - start_time))	
