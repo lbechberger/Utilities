@@ -20,7 +20,7 @@ do
 	current_jobs=$(qstat | grep ann | grep '[0-9]\{6\}' -o)
 
 	# give them some time to run
-	sleep 10m
+	sleep 1m
 
 	# check whether any of them has been killed
 	for job in $current_jobs
